@@ -4,17 +4,38 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import powerlaw
-import scipy
-
+from scipy import special
 
 matplotlib.rc('xtick', labelsize=14) 
 matplotlib.rc('ytick', labelsize=14)
 
-xpdfAlpha = 2.27
-mupdfAlpha = 1.98
-convertAlpha = 1.32
+progs = ["xpdf", "mupdf", "convert", "ffmpeg", "autotrace", "jpegtran"]
 
-xpdfK = 5
+# These values are obtained from the fuzzing_campaign_analysis script.
+prog_alpha = {"xpdf": 2.27, "mupdf": 1.98, "convert": 1.32,
+              "ffmpeg": 1.66, "autotrace": 1.32, "jpegtran": 2.82}
+
+prog_max_crash = {"xpdf": 64, "mupdf": 60, "convert": 3197,
+                  "ffmpeg": 863, "autotrace": 593, "jpegtran": 30}
+
+prog_total_crash = {"xpdf": 4065, "mupdf": 9184, "convert": 79636,
+                    "ffmpeg": 3872, "autotrace": 2548, "jpegtran": 113}
+
+prog_bug_count = {"xpdf": 34, "mupdf": 24, "convert": 134,
+                  "ffmpeg": 96, "autotrace": 23, "jpegtran": 33}
+
+prog_k = {}
+
+# We have a discrete power law distribution.
+# Given the alpha and a probability, we want to know the i
+def getK(alpha, prob):
+
+    return round(math.exp(math.log(prob * special.zeta(alpha, 1)) / -alpha))
+
+for prog in progs:
+    prog_k[prog] = getK(prog_alpha[prog], prog_max_crash[prog] / prog_total_crash[prog])
+    print(prog + " k = " + str(prog_k[prog]))
+
 
 def runModel(alpha, t, k):
     simDist = powerlaw.Power_Law(xmin=1, parameters=[alpha], discrete=True)
@@ -45,7 +66,7 @@ def runSeqSim(n, seq_len):
     bugCount = {}
     seqs = []
     for i in range(0, 5):
-        seq = runModel(xpdfAlpha, 10000, xpdfK)
+        seq = runModel(prog_alpha["xpdf"], 10000, prog_k["xpdf"])
         
         _seq = []
         for bug in seq:
@@ -71,7 +92,7 @@ def runSeqSim(n, seq_len):
                 output = output + " & \\textbf{" + str(bug) + "}"
         print(output)
         print()
-runSeqSim(222, 15)
+
 
 # Exp 2
 
@@ -92,8 +113,8 @@ def drawBHUnique():
         CSizeBHUnique2.append([])
         
         for i in range(0, repeat):
-            seqComp = runModel(xpdfAlpha, 10000 * C, xpdfK)
-            seqBH = runModel(xpdfAlpha, 10000, xpdfK)
+            seqComp = runModel(prog_alpha["xpdf"], 10000 * C, prog_k["xpdf"])
+            seqBH = runModel(prog_alpha["xpdf"], 10000, prog_k["xpdf"])
             
             sizeBH = len(seqBH)
             sizeComp = len(seqComp)    
@@ -102,8 +123,8 @@ def drawBHUnique():
             # print(str(sizeComp) + ", " + str(sizeBH) + ", " + str(sizeBHUnique)) 
 
             # Should be merged:
-            seqComp = runModel(alpha2, 10000 * C, xpdfK)
-            seqBH = runModel(alpha2, 10000, xpdfK)
+            seqComp = runModel(alpha2, 10000 * C, prog_k["xpdf"])
+            seqBH = runModel(alpha2, 10000, prog_k["xpdf"])
             
             sizeBH = len(seqBH)
             sizeComp = len(seqComp)    
@@ -118,8 +139,7 @@ def drawBHUnique():
         stdList.append(np.std(CSizeBHUnique[C - 1]))
         BHUniqueSizes2.append(np.mean(CSizeBHUnique2[C - 1]))
         stdList2.append(np.std(CSizeBHUnique2[C - 1]))    
-    
-        
+
     fontSize = 18
     figWidth = 7
     figHeight = 5
@@ -137,33 +157,25 @@ def drawBHUnique():
     eb = plt.errorbar(np.arange(len(BHUniqueSizes)) + 1, BHUniqueSizes, yerr=stdList, errorevery=3, label=r"$\alpha$ = 2.27")
     eb[-1][0].set_linestyle('--')
 
-
-    
     ax.legend(loc=1)
     
     ax.set_ylim([0, ax.get_ylim()[1]])
     
     fig.tight_layout()
     
-    fig.savefig("bhUnique.pdf") 
+    fig.savefig("../output/bhUnique.pdf")
 
-
-drawBHUnique()
 
 def expected_find(n, t, alpha, k):
         
     sumP = 0    
     
-    denom = scipy.special.zeta(alpha, 1)
+    denom = special.zeta(alpha, 1)
         
     for i in range(k, n):
         sumP += math.exp(- math.pow(i, -alpha) / denom * t)
 
     return n - sumP - k       
-
-print(expected_find(1000, 1000, 1.8, 100))
-print(expected_find(10000, 1000, 1.8, 100))    
-print(expected_find(100000, 1000, 1.8, 100))
 
 
 def drawExpectedFind(alpha, discovered, n_list, step, runs):
@@ -193,25 +205,12 @@ def drawExpectedFind(alpha, discovered, n_list, step, runs):
     
     fig.tight_layout()
     
-    fig.savefig("expectedBugs.pdf") 
-
-
-
-# These are the same
-print(scipy.special.zeta(1.26, 1))
-print(scipy.special.zetac(1.26) + 1)
-
-# We have a discrete power law distribution.
-# Given the alpha and a probability, we want to know the i
-def getK(alpha, prob):
-    
-    return round(math.exp(math.log(prob * scipy.special.zeta(alpha, 1)) / -alpha))
-
+    fig.savefig("../output/expectedBugs.pdf")
 
 
 def getExpTimeSingle(alpha, i):
     
-    print(1 / (math.pow(i, -alpha) / scipy.special.zeta(alpha, 1)) )
+    print(1 / (math.pow(i, -alpha) / special.zeta(alpha, 1)) )
 
 #getExpTimeSingle(1.26, 7)
 #getExpTimeSingle(1.26, 8)
@@ -229,12 +228,11 @@ def estN(t, d, k, alpha, low, up):
     
     seePos = False
     seeNeg = False
-     
-  
+
     for n in range(low, up, 1):
         
         _d = expected_find(n, t, alpha, k)
-        #print(_d)
+        # print(_d)
         diff = d - _d
         
         if diff > 0:
@@ -244,27 +242,36 @@ def estN(t, d, k, alpha, low, up):
             
         diff = abs(diff)
         
-        if minDiff == None or diff < minDiff:
+        if minDiff is None or diff < minDiff:
             minDiff = diff
             opN = n
-        #if n % 10 == 0:
+        # if n % 10 == 0:
         #    print(str(n) + ", " + str(d - _d))
-            
-            
+
     assert seePos and seeNeg
     
     print("opN = " + str(opN))
     print("minDiff = " + str(minDiff))
     return opN
 
+estN(prog_total_crash["xpdf"], prog_bug_count["xpdf"], prog_k["xpdf"], prog_alpha["xpdf"], 30, 1000)
+estN(prog_total_crash["mupdf"], prog_bug_count["mupdf"], prog_k["mupdf"], prog_alpha["mupdf"], 20, 400)
+estN(prog_total_crash["convert"], prog_bug_count["convert"], prog_k["convert"], prog_alpha["convert"], 100, 1000)
+estN(prog_total_crash["ffmpeg"], prog_bug_count["ffmpeg"], prog_k["ffmpeg"], prog_alpha["ffmpeg"], 30, 1000)
+estN(prog_total_crash["autotrace"], prog_bug_count["autotrace"], prog_k["autotrace"], prog_alpha["autotrace"], 20, 1000)
+estN(prog_total_crash["jpegtran"], prog_bug_count["jpegtran"], prog_k["jpegtran"], prog_alpha["jpegtran"], 10, 1000)
 
+drawBHUnique()
 
-print("xpdf k = " + str(getK(xpdfAlpha, 64 / 4065)))
-print("mupdf k = " + str(getK(mupdfAlpha, 60 / 9184)))
-print("convert k = " + str(getK(convertAlpha, 3197 / 79636)))
-estN(4065, 34, 5, xpdfAlpha, 30, 1000)
-estN(9184, 24, 10, mupdfAlpha, 30, 400)
-estN(79636, 134, 4, convertAlpha, 100, 1000)
+print(expected_find(1000, 1000, 1.8, 100))
+print(expected_find(10000, 1000, 1.8, 100))
+print(expected_find(100000, 1000, 1.8, 100))
 
+# These are the same
+print(special.zeta(1.26, 1))
+print(special.zetac(1.26) + 1)
 
-drawExpectedFind(xpdfAlpha, xpdfK, [42,52,62], 1, 10000)
+# We simulate 5 different discovery sequences of fuzzing the same program.
+runSeqSim(222, 15)
+
+drawExpectedFind(prog_alpha["xpdf"], prog_k["xpdf"], [42,52,62], 1, 10000)

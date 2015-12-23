@@ -8,35 +8,12 @@ from crasher_analysis import *
 from lib import fit_powerlaw
 from scipy.stats import pearsonr
 
-# xpdf
-# vm_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_xpdf_3.02-2_folder/"
-
-# gif2png
-vm_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_gif2png_folder/"
-
-# mp3gain
-# vm_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_mp3gain_folder/"
-
-# convert
-# vm_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_convert_folder/"
-
-# mupdf
-# vm_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_mupdf_folder/"
-
-# jpegtran
-# vm_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_jpegtran_folder/"
+titleDecor = {"xpdf_3.02-2": "", "mupdf": "", "convert": "",
+              "ffmpeg": "", "autotrace": "", "gif2png": "",
+              "feh": "", "mp3gain": "", "jpegtran": ""}
 
 
-
-targets = ["xpdf_3.02-2", "mupdf", "convert", "gif2png", "mp3gain", "jpegtran"]
-
-titleDecor = {"xpdf_3.02-2":"*", "mupdf":"*", "convert":"*",
-              "gif2png":"", "mp3gain":"", "jpegtran":""}
-
-
-    
-
-def sortBFFLogs(bff_logs):
+def sort_bff_logs(bff_logs):
     
     sorted_logs = []
     
@@ -54,11 +31,14 @@ def sortBFFLogs(bff_logs):
             sorted_logs[num - i - 1] = log
     return sorted_logs
 
-def drawResults(target, ax = None):
+
+def analyze_one_campaign(target, ax=None):
 
     vm_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_" + target + "_folder/"
     
     bff_logs = []
+
+    fuzz_info = {}
     
     # We go through the folder and get the path of all files
     for root, subFolders, files in os.walk(vm_folder + "/results"):
@@ -77,7 +57,7 @@ def drawResults(target, ax = None):
     for exp in exps:
         expCount[exp] = 0
     
-    for bff_log_path in sortBFFLogs(bff_logs):
+    for bff_log_path in sort_bff_logs(bff_logs):
     
         #print(bff_log_path)
     
@@ -148,13 +128,10 @@ def drawResults(target, ax = None):
     print("run_count = " + str(run_count))
     print("crash_count = " + str(crash_count))
     print("bug_count = " + str(bug_count))
-    
+
     bff_log.close()
     
     crash_run_counts = {}
-
-    
-
     crash_counts_sorted = []
     crash_exp_sorted = []
     crash_color_sorted = []
@@ -165,19 +142,20 @@ def drawResults(target, ax = None):
         crash_counts_sorted.append(crash_run_counts[pair[1]])
         crash_color_sorted.append(exp_color[crash_infos[pair[1]].exploitability])
         crash_exp_sorted.append(expToNum[crash_infos[pair[1]].exploitability])
-    
-    print("max crash = " + str(max(crash_counts_sorted)))    
-    
+
+    max_crash_count = max(crash_counts_sorted)
+
+    print("max crash = " + str(max_crash_count))
+
     ###################################
     # Draw the distribution of bugs
     ###################################
     
-    if ax == None:
+    if ax is None:
         ax = plt.axes()
     
     pos = np.arange(len(crash_counts_sorted))
     #width = 1.0
-    
 
     #ax.set_xticks(pos + (width / 2))
     #ax.set_xticklabels(list(progSorted))
@@ -191,8 +169,7 @@ def drawResults(target, ax = None):
     
     for i in range(0, len(crash_counts_sorted)):
         barlist[i].set_color(crash_color_sorted[i])
-    
-    
+
     #plt.show()
     
     fit_powerlaw(sorted(crash_counts_sorted, reverse=True))
@@ -213,8 +190,14 @@ def drawResults(target, ax = None):
     #print(expCount)
     for exp in expCount:
         print(exp + ": " + str(expCount[exp]) + ", " + str(expCount[exp] / bug_count))
-    
-    return [crash_counts_sorted, crash_exp_sorted]
+
+    fuzz_info["alpha"] = fit.alpha
+    fuzz_info["bug_count"] = bug_count
+    fuzz_info["max_crash"] = max_crash_count
+    fuzz_info["run_count"] = run_count
+    fuzz_info["crash_count"] = crash_count
+
+    return [crash_counts_sorted, crash_exp_sorted], fuzz_info
 
 
 def drawCorr(corrData):
@@ -244,7 +227,8 @@ def drawCorr(corrData):
     print("r = " + str(r))
     print("p = " + str(p))
 
-def drawAll():
+
+def draw_freq_dists(targets, prog_fuzz_info):
     # Draw n * 3 figures
     
     numRow = 2
@@ -268,22 +252,22 @@ def drawAll():
 
             print(target)
             
-            progCorrData[target] = drawResults(target, ax)
+            progCorrData[target], prog_fuzz_info[target] = analyze_one_campaign(target, ax)
             
     fig.tight_layout()
     
-    fig.savefig("Distributions.pdf")       
-       
+    fig.savefig("../output/distributions.pdf")
+
+
+
     fig=plt.figure()
-    
-    
 
     numRow = 1
     numCol = 3
-    
-    #fig, axes = plt.subplots(nrows=numRow, ncols=numCol, 
-#                             sharex=False, sharey=False)   
-    
+
+    #fig, axes = plt.subplots(nrows=numRow, ncols=numCol,
+#                             sharex=False, sharey=False)
+
     #fig.set_size_inches(numCol * 3, numRow * 2.5)
     
     for i in range(0, numCol):
@@ -307,4 +291,4 @@ def drawAll():
 
 #drawResults("convert")
 
-drawAll()
+

@@ -10,10 +10,11 @@ import shutil
 
 #prog = "xpdf_3.02-2"
 #prog  = "gif2png"
-#prog = "mp3gain"
+prog = "a2mp3"
 #prog = "mp3blaster"
 #prog = "jpegtran" 
-prog = "eog"
+# prog = "eog"
+#prog = "experiment"
 
 seed_list_path = prog + "seeds.txt"
 seed_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_" + prog + "_folder/seedfiles/examples/"

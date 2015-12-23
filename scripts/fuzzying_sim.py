@@ -9,32 +9,7 @@ from scipy import special
 matplotlib.rc('xtick', labelsize=14) 
 matplotlib.rc('ytick', labelsize=14)
 
-progs = ["xpdf", "mupdf", "convert", "ffmpeg", "autotrace", "jpegtran"]
 
-# These values are obtained from the fuzzing_campaign_analysis script.
-prog_alpha = {"xpdf": 2.27, "mupdf": 1.98, "convert": 1.32,
-              "ffmpeg": 1.66, "autotrace": 1.32, "jpegtran": 2.82}
-
-prog_max_crash = {"xpdf": 64, "mupdf": 60, "convert": 3197,
-                  "ffmpeg": 863, "autotrace": 593, "jpegtran": 30}
-
-prog_total_crash = {"xpdf": 4065, "mupdf": 9184, "convert": 79636,
-                    "ffmpeg": 3872, "autotrace": 2548, "jpegtran": 113}
-
-prog_bug_count = {"xpdf": 34, "mupdf": 24, "convert": 134,
-                  "ffmpeg": 96, "autotrace": 23, "jpegtran": 33}
-
-prog_k = {}
-
-# We have a discrete power law distribution.
-# Given the alpha and a probability, we want to know the i
-def getK(alpha, prob):
-
-    return round(math.exp(math.log(prob * special.zeta(alpha, 1)) / -alpha))
-
-for prog in progs:
-    prog_k[prog] = getK(prog_alpha[prog], prog_max_crash[prog] / prog_total_crash[prog])
-    print(prog + " k = " + str(prog_k[prog]))
 
 
 def runModel(alpha, t, k):
@@ -62,11 +37,11 @@ def runModel(alpha, t, k):
 
 # Exp 1
 
-def runSeqSim(n, seq_len):
+def runSeqSim(n, seq_len, fuzz_info):
     bugCount = {}
     seqs = []
     for i in range(0, 5):
-        seq = runModel(prog_alpha["xpdf"], 10000, prog_k["xpdf"])
+        seq = runModel(fuzz_info["alpha"], 10000, fuzz_info["k"])
         
         _seq = []
         for bug in seq:
@@ -96,7 +71,7 @@ def runSeqSim(n, seq_len):
 
 # Exp 2
 
-def drawBHUnique():
+def drawBHUnique(fuzz_info):
     BHUniqueSizes = []
     BHUniqueSizes2 = []
     repeat = 30
@@ -113,8 +88,8 @@ def drawBHUnique():
         CSizeBHUnique2.append([])
         
         for i in range(0, repeat):
-            seqComp = runModel(prog_alpha["xpdf"], 10000 * C, prog_k["xpdf"])
-            seqBH = runModel(prog_alpha["xpdf"], 10000, prog_k["xpdf"])
+            seqComp = runModel(fuzz_info["alpha"], 10000 * C, fuzz_info["k"])
+            seqBH = runModel(fuzz_info["alpha"], 10000, fuzz_info["k"])
             
             sizeBH = len(seqBH)
             sizeComp = len(seqComp)    
@@ -123,15 +98,14 @@ def drawBHUnique():
             # print(str(sizeComp) + ", " + str(sizeBH) + ", " + str(sizeBHUnique)) 
 
             # Should be merged:
-            seqComp = runModel(alpha2, 10000 * C, prog_k["xpdf"])
-            seqBH = runModel(alpha2, 10000, prog_k["xpdf"])
+            seqComp = runModel(alpha2, 10000 * C, fuzz_info["k"])
+            seqBH = runModel(alpha2, 10000, fuzz_info["k"])
             
             sizeBH = len(seqBH)
             sizeComp = len(seqComp)    
             sizeBHUnique = len(seqBH) - len(set(seqComp).intersection(seqBH))
             CSizeBHUnique2[C - 1].append(sizeBHUnique)
 
-    
     stdList = []
     stdList2 = []
     for C in range(1, CMax):
@@ -219,10 +193,21 @@ def getExpTimeSingle(alpha, i):
 #getExpTimeSingle(1.26, 1000000)
 
 
+# We have a discrete power law distribution.
+# Given the alpha and a probability, we want to know the i
+def getK(alpha, prob):
+    return round(math.exp(math.log(prob * special.zeta(alpha, 1)) / -alpha))
+
+
 # We need to manually select the upper and lower bound.
 # We should see the diff changes from positive to negative.  
-def estN(t, d, k, alpha, low, up):
-    
+def estN(fuzz_info, low, up):
+
+    t = fuzz_info["run_count"]
+    alpha = fuzz_info["alpha"]
+    k = fuzz_info["k"]
+    d = fuzz_info["bug_count"]
+
     minDiff = None 
     opN = None
     
@@ -253,25 +238,3 @@ def estN(t, d, k, alpha, low, up):
     print("opN = " + str(opN))
     print("minDiff = " + str(minDiff))
     return opN
-
-estN(prog_total_crash["xpdf"], prog_bug_count["xpdf"], prog_k["xpdf"], prog_alpha["xpdf"], 30, 1000)
-estN(prog_total_crash["mupdf"], prog_bug_count["mupdf"], prog_k["mupdf"], prog_alpha["mupdf"], 20, 400)
-estN(prog_total_crash["convert"], prog_bug_count["convert"], prog_k["convert"], prog_alpha["convert"], 100, 1000)
-estN(prog_total_crash["ffmpeg"], prog_bug_count["ffmpeg"], prog_k["ffmpeg"], prog_alpha["ffmpeg"], 30, 1000)
-estN(prog_total_crash["autotrace"], prog_bug_count["autotrace"], prog_k["autotrace"], prog_alpha["autotrace"], 20, 1000)
-estN(prog_total_crash["jpegtran"], prog_bug_count["jpegtran"], prog_k["jpegtran"], prog_alpha["jpegtran"], 10, 1000)
-
-drawBHUnique()
-
-print(expected_find(1000, 1000, 1.8, 100))
-print(expected_find(10000, 1000, 1.8, 100))
-print(expected_find(100000, 1000, 1.8, 100))
-
-# These are the same
-print(special.zeta(1.26, 1))
-print(special.zetac(1.26) + 1)
-
-# We simulate 5 different discovery sequences of fuzzing the same program.
-runSeqSim(222, 15)
-
-drawExpectedFind(prog_alpha["xpdf"], prog_k["xpdf"], [42,52,62], 1, 10000)

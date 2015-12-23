@@ -8,18 +8,20 @@ import random
 
 #prog = "xpdf_3.02-2"
 #prog  = "gif2png"
-#prog = "mp3gain"
+prog = "feh"
 #prog = "mp3blaster"
 #prog = "jpegtran"
-prog = "eog"
+# prog = "eog"
+
+# prog = "experiment"
 
 cov_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_" + prog + "_folder/pincoverage/results/"
 
+print(cov_folder)
+
 bbl_dist_fig_path = "bbl_dist.pdf"
 
-covs = []
-
-seed_num = 80
+seed_num = 50
 
 # In each iteration, we randomly select this number of files, 
 # and select the one that contributes most new bbls to the seeds. 
@@ -27,7 +29,7 @@ seed_num = 80
 # more execution time.
 cand_size = 100
 
-
+covs = []
 
 # We go through the folder and get the path of all files
 for root, subFolders, files in os.walk(cov_folder):

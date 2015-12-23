@@ -68,7 +68,8 @@ def getCrashersInfo(crashers_folder):
         
         line_count = 0
         
-        #print(gdb_file)
+        # print(gdb_file)
+
         for line in codecs.open(gdb_file, "r", "utf-8"):
     
             line_count += 1        

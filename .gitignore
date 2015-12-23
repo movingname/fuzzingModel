@@ -1,3 +1,5 @@
 .idea/
 *.pyc
-*.pdf 
+*.pdf
+output/
+scripts_seed_collection/

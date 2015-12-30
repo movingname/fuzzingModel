@@ -1,36 +1,25 @@
 
-
-
 import codecs
 import matplotlib.pyplot as plt
 import numpy as np 
 import os
 import math
 
-# xpdf-myseeds
-crashers_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_xpdf_3.02-2_folder/results/crashers/"
-
-# convert-default
-#crashers_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_convert_folder/results/crashers/"
-
 exps = {"EXPLOITABLE", "PROBABLY_EXPLOITABLE", "PROBABLY_NOT_EXPLOITABLE",
         "NOT_EXPLOITABLE", "UNKNOWN"}
 
-exp_color = {"EXPLOITABLE":"red",
-             "PROBABLY_EXPLOITABLE":"blue",
-             "PROBABLY_NOT_EXPLOITABLE":"yellow",
-             "NOT_EXPLOITABLE":"green",
-             "UNKNOWN":"grey"}
+exp_color = {"EXPLOITABLE": "red",
+             "PROBABLY_EXPLOITABLE": "blue",
+             "PROBABLY_NOT_EXPLOITABLE": "yellow",
+             "NOT_EXPLOITABLE": "green",
+             "UNKNOWN": "grey"}
 
-expToNum = {"EXPLOITABLE":3,
-             "PROBABLY_EXPLOITABLE":2,
-             "PROBABLY_NOT_EXPLOITABLE":1,
-             "NOT_EXPLOITABLE":0,
-             "UNKNOWN":None}
+expToNum = {"EXPLOITABLE": 3,
+             "PROBABLY_EXPLOITABLE": 2,
+             "PROBABLY_NOT_EXPLOITABLE": 1,
+             "NOT_EXPLOITABLE": 0,
+             "UNKNOWN": None}
 
-def sorted_ls(path):
-    mtime = lambda f: os.stat(os.path.join(path, f)).st_mtime
-    return list(sorted(os.listdir(path), key=mtime))
 
 class Bug(object):
 
@@ -44,7 +33,13 @@ class Bug(object):
         self.id = _id
         self.exploitability = exploitability
         self.crasher = crasher
-    
+
+
+def sorted_ls(path):
+    mtime = lambda f: os.stat(os.path.join(path, f)).st_mtime
+    return list(sorted(os.listdir(path), key=mtime))
+
+
 def getCrashersInfo(crashers_folder):
     crashers = sorted_ls(crashers_folder)
     

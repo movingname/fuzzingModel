@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Sep 12 17:15:12 2015
-
-@author: rvlfl_000
-"""
 
 import math
 

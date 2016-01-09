@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Sep 14 10:05:09 2015
-
-@author: rvlfl_000
-"""
 
 import codecs
 import shutil

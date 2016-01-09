@@ -1,8 +1,35 @@
-# fuzzingModel
+# Empirical Analysis and Modeling of Black-Box Mutational Fuzzing
 
-This is the project folder for the work Empirical Analysis and Modeling of Black-Box Mutational Fuzzing. 
+This repository contains data and scripts for the work Empirical Analysis and Modeling of Black-Box Mutational Fuzzing. 
 
-If there are information missing in the repo, please email us at muz127@ist.psu.edu.
+Please email us (muz127@ist.psu.edu) for any question.
+
+
+## 1. Data
+
+## 2. The Analysis
+
+## 3. The Fuzzing Process
+
+NOTICE: The fuzzing process described in the paper cannot be reproduced using data provided here.
+One reason is that we do not provide seed files, because the size of the collection is very large (10GB+).
+However, here we list all steps of our fuzzing experiment, from seed collection to running fuzzing.
+
+### 3.1 Prepare the fuzzing environment
+
+(1) Download the VM image of BFF 2.7 and follow the installation guide.
+https://www.cert.org/vulnerability-analysis/tools/bff.cfm?
+
+(2) After launching the VM, install the target application using apt-get. We list program version numbers in the paper.
+
+(3) Install the pincoverage tool we wrote. First, copy pincoverage/ to the bff shared folder in the host OS.
+Then in the guest OS, enter pincoverage/ and do make
+
+### 
+
+### Seed Collection
+
+### 
 
 
 ## Commands used for fuzzing programs:

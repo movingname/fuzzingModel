@@ -39,7 +39,8 @@ def analyze_one_campaign(target, ax=None, chart="bar", alpha_cached=True):
     if target == "xpdf":
         target_full = "xpdf_3.02-2"
 
-    vm_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_" + target_full + "_folder/"
+	vm_folder = "../results/UbuFuzz_2013_32_" + target_full + "_folder/"
+    # vm_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_" + target_full + "_folder/"
 
     bff_logs = []
 

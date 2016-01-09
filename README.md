@@ -25,14 +25,13 @@ https://www.cert.org/vulnerability-analysis/tools/bff.cfm?
 (3) Install the pincoverage tool we wrote. First, copy pincoverage/ to the bff shared folder in the host OS.
 Then in the guest OS, enter pincoverage/ and do make
 
-### 
+### 3.2 Seed Collection
 
-### Seed Collection
+### 3.3 Collect and Analyze Coverage Data
 
-### 
+### 3.4 Run Fuzzing
 
-
-## Commands used for fuzzing programs:
+*Commands used for fuzzing programs*:
 
 autotrace:
 autotrace $SEEDFILE > test.pdf

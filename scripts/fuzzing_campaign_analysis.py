@@ -33,7 +33,7 @@ def sort_bff_logs(bff_logs):
     return sorted_logs
 
 
-def analyze_one_campaign(target, ax=None, chart="bar", alpha_cached=False):
+def analyze_one_campaign(target, ax=None, chart="bar", alpha_cached=True):
 
     target_full = target
     if target == "xpdf":
@@ -259,8 +259,8 @@ def analyze_one_campaign(target, ax=None, chart="bar", alpha_cached=False):
     # print(expCount)
 
     # Obtained using simulation with n=1000
-    prog_alpha_cached = {"xpdf": 2.43, "mupdf": 2.95, "convert": 2.38,
-                         "ffmpeg": 2.20, "autotrace": 2.97, "jpegtran": 3.55}
+    # prog_alpha_cached = {"xpdf": 2.43, "mupdf": 2.95, "convert": 2.38,
+    #                     "ffmpeg": 2.20, "autotrace": 2.97, "jpegtran": 3.55}
 
     # Obtained using simulation with n=infinite
     prog_alpha_cached = {"xpdf": 2.38, "mupdf": 2.88, "convert": 2.38,

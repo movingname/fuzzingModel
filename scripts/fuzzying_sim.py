@@ -109,7 +109,7 @@ def runSeqSim(n, seq_len, fuzz_info):
     bugCount = {}
     seqs = []
     for i in range(0, 5):
-        seq = runModel(fuzz_info["alpha"], 10000, fuzz_info["k"])
+        bugs, bugs_accu, seq = expected_find_sim(1000, 10000, fuzz_info["alpha"])
         
         _seq = []
         for bug in seq:

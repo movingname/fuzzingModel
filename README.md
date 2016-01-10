@@ -20,7 +20,8 @@ Please unzip the content to the results/ folder.
 ## 2. Analysis
 
 The scripts/ folder has all scripts used for data analysis. Among these scripts, the Jupyter notebook (IPython notebook) 
-**main_analysis.ipynb** contains all results presented in Section 4, 5 and 6. **You could directly view the notebook on Github**. 
+**main_analysis.ipynb** contains all results presented in Section 4, 5 and 6 of the paper. 
+**You could directly view the notebook on Github**. 
 
 To run the notebook locally, please first install the following packages:
 
@@ -50,11 +51,11 @@ Below, we list all steps of our fuzzing experiment, from seed collection to runn
 
 (1) Download the VM image of BFF 2.7 and follow the installation guide.
 
-https://www.cert.org/vulnerability-analysis/tools/bff.cfm?
+https://www.cert.org/vulnerability-analysis/tools/bff.cfm
 
 (2) After launching the VM, install the target application using apt-get. We list program version numbers in the paper.
 
-(3) Install the pincoverage tool we wrote. First, copy pincoverage/ to the bff shared folder in the host OS.
+(3) Install the pincoverage tool we wrote. First, copy pincoverage/ to the bff shared folder.
 Then on the guest OS 
 
 	cd pincoverage/

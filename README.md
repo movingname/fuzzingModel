@@ -56,7 +56,7 @@ Then in the guest OS, enter pincoverage/ and do
 
 ### 3.2 Seed Collection
 
-We briefly describe how to collect seed files from the Internet:
+Here are the sources we used for each type of seed files.
 
 **Video**:
 
@@ -104,7 +104,7 @@ http://bmptestsuite.sourceforge.net/
 
 ### 3.3 Collect and Analyze Coverage Data
 
-(1) In the host OS, put all seed files for a target program into bff/full_seeds.
+(1) On the host OS, put all seed files for a target program into bff/full_seeds.
 
 (2) Start code coverage data collection:
 
@@ -135,9 +135,9 @@ Update the backup_count to 500.
 
 (3) Tell BFF the command used in fuzzing. In conf.d/bff.cg, update the following lines:
 
-cmdline=<The command>
+cmdline=[The command]
 
-killprocname=<name of the target program>
+killprocname=[name of the target program]
 
 ## Commands Used for Fuzzing Programs:
 

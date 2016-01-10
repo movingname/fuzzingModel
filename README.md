@@ -4,7 +4,9 @@ This repository contains data and scripts for the work Empirical Analysis and Mo
 
 To reproduce our analysis, please follow the steps described Section 1 and 2.
 To redo the fuzzing, please follow the steps in Section 3. **Notice**: We do not share seed files, 
-because the size of the seed collection is too large (10GB+). We list the sources of seed files we used in Section 3.1.
+because the size of the seed collection is too large (10GB+). However, we list the sources of seed files we used in Section 3.1.
+Some seed files can be directly downloaded from websites, while others need to be collected from search engines such as Bing
+and Google.
 
 Please email us (muz127@ist.psu.edu) for any question. Thank you!
 
@@ -127,6 +129,8 @@ and replace items after '--' with the right command. Please see the last section
 	
 ### 3.4 Run Fuzzing
 
+More information can be find in the README file of BFF.
+
 (1) Increase the maximum number of backup logs. In bff.py, find the following line:
 
     # set up remote logging
@@ -135,10 +139,12 @@ and replace items after '--' with the right command. Please see the last section
 				  
 Update the backup_count to 500.
 
-(2) (Optional) To clear up all fuzzing campagin records:
+(2) To clear up all previous fuzzing campagin records:
 
     ./reset_bff.sh --remove-results
 
+You will receive an error message if no previous records exist. This is fine.
+	
 (3) Tell BFF the command used in fuzzing. In conf.d/bff.cg, update the following lines:
 
 cmdline=[The command]
@@ -149,7 +155,7 @@ We list all commands in the last section of this file.
 
 (4) Run a fuzzing campagin:
 
-    ./batchs.sh
+    ./batch.sh
 
 This executes forever so please stop at some point. Also, the fuzzing campagin can be resumed after a stop.
 

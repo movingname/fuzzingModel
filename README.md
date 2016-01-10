@@ -42,7 +42,7 @@ Then launch Jupyter notebook and play with the main_analysis.ipynb.
 Below, we list all steps of our fuzzing experiment, from seed collection to running fuzzing.
 NOTICE: We do not share seed files, because the size of the seed collection is too large (10GB+).
 
-### 3.1 Prepare the fuzzing environment
+### 3.1 Prepare the Fuzzing Environment
 
 (1) Download the VM image of BFF 2.7 and follow the installation guide.
 https://www.cert.org/vulnerability-analysis/tools/bff.cfm?
@@ -50,7 +50,9 @@ https://www.cert.org/vulnerability-analysis/tools/bff.cfm?
 (2) After launching the VM, install the target application using apt-get. We list program version numbers in the paper.
 
 (3) Install the pincoverage tool we wrote. First, copy pincoverage/ to the bff shared folder in the host OS.
-Then in the guest OS, enter pincoverage/ and do make
+Then in the guest OS, enter pincoverage/ and do
+
+    python make.py
 
 ### 3.2 Seed Collection
 
@@ -119,7 +121,25 @@ http://bmptestsuite.sourceforge.net/
 	
 ### 3.4 Run Fuzzing
 
-*Commands used for fuzzing programs*:
+(1) Increase the maximum number of backup logs. In bff.py, find the following line:
+
+    # set up remote logging
+    setup_logfile(cfg.output_dir, log_basename='bff.log', level=logging.INFO,
+                  max_bytes=1e7, backup_count=5)
+				  
+Update the backup_count to 500.
+
+(2) (Optional) To clear up all fuzzing campagin records:
+
+    ./reset_bff.sh --remove-results
+
+(3) Tell BFF the command used in fuzzing. In conf.d/bff.cg, update the following lines:
+
+cmdline=<The command>
+
+killprocname=<name of the target program>
+
+## Commands Used for Fuzzing Programs:
 
 autotrace:
 

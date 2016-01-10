@@ -80,7 +80,7 @@ http://www.schaik.com/pngsuite/
 
 https://code.google.com/p/imagetestsuite/wiki/PNGTestSuite
 
-GIF:
+**GIF**:
 
 https://github.com/dvyukov/go-fuzz/tree/master/examples/gif/corpus
 
@@ -88,13 +88,13 @@ https://code.google.com/p/imagetestsuite/downloads/list
 
 Google Image Downloader
 
-JPEG:
+**JPEG**:
 
 https://code.google.com/p/imagetestsuite/downloads/detail?name=imagetestsuite-jpg-1.00.tar.gz&amp;can=2&amp;q=
 
 Google Image Downloader
 
-Bitmap:
+**Bitmap**:
 
 http://bmptestsuite.sourceforge.net/
 
@@ -102,41 +102,67 @@ http://bmptestsuite.sourceforge.net/
 
 ### 3.3 Collect and Analyze Coverage Data
 
+(1) In the host OS, put all seed files for a target program into bff/full_seeds.
+
+(2) Start code coverage data collection:
+
+    python pincoverage/collect_cov.py
+
+(3) Use the greedy algorithm to select seeds (on the host OS):
+
+    python scripts/analyze_cov.py
+	
+(4) Copy selected seeds to the fuzzing folder (on the host machine):
+
+    python copy_seeds.py
+
+	
 ### 3.4 Run Fuzzing
 
 *Commands used for fuzzing programs*:
 
 autotrace:
+
     autotrace $SEEDFILE > test.pdf
 
 convert:
+
     ~/convert $SEEDFILE /dev/null
 
 feh: 
+
     feh $SEEDFILE
 
 ffmpeg: 
+
     ffmpeg -i $SEEDFILE -f rawvideo -y /dev/null
 
 gif2png:
+
     gif2png -r -f -h -O $SEEDFILE
 
 gifsicle:
+
     gifsicle -i < $SEEDFILE > /dev/null
 
 jpegtran:
+
     jpegtran $SEEDFILE
 
 mp3gain:
+
     mp3gain $SEEDFILE
 
 mupdf:
+
     mupdf $SEEDFILE
 
 Outside In Viewer: 
+
     <Directory>/sdk/demo/simple $SEEDFILE
 
 xpdf:
+
     xpdf $SEEDFILE
 
 

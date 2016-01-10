@@ -2,10 +2,11 @@
 
 This repository contains data and scripts for the work Empirical Analysis and Modeling of Black-Box Mutational Fuzzing. 
 
-To reproduce our analysis and experiment, please follow the steps described in each section.
+To reproduce our analysis, please follow the steps described Section 1 and 2.
+To redo the fuzzing, please follow the steps in Section 3. **Notice**: We do not share seed files, 
+because the size of the seed collection is too large (10GB+). We list the sources of seed files we used in Section 3.1.
 
 Please email us (muz127@ist.psu.edu) for any question.
-
 
 ## 1. Data
 
@@ -40,7 +41,6 @@ Then launch Jupyter notebook and play with the main_analysis.ipynb.
 ## 3. The Fuzzing Process
 
 Below, we list all steps of our fuzzing experiment, from seed collection to running fuzzing.
-NOTICE: We do not share seed files, because the size of the seed collection is too large (10GB+).
 
 ### 3.1 Prepare the Fuzzing Environment
 
@@ -102,7 +102,7 @@ http://bmptestsuite.sourceforge.net/
 
 ### 3.3 Collect and Analyze Coverage Data
 
-(1) On the host OS, put all seed files for a target program into bff/full_seeds.
+(1) Copy all seed files for a target program into bff/full_seeds:
 
 (2) In pincoverage/collect_cov.py, find line:
 
@@ -110,7 +110,7 @@ http://bmptestsuite.sourceforge.net/
 
 Update items after '--' with the right command. Please see the last section for all commands.
 	
-(3) Start code coverage data collection:
+(3) Start code coverage data collection (on the guest OS):
 
     python pincoverage/collect_cov.py
 
@@ -118,7 +118,7 @@ Update items after '--' with the right command. Please see the last section for 
 
     python scripts/analyze_cov.py
 	
-(5) Copy selected seeds to the fuzzing folder (on the host machine):
+(5) Copy selected seeds to the fuzzing folder (on the host OS):
 
     python copy_seeds.py
 
@@ -151,7 +151,7 @@ We list all commands in the last section of this file.
 
 This executes forever so please stop at some point. Also, the fuzzing campagin can be resumed after a stop.
 	
-## Commands Used for Fuzzing Programs:
+## 4. Commands Used for Fuzzing Programs:
 
 autotrace:
 

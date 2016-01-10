@@ -7,13 +7,34 @@ Please email us (muz127@ist.psu.edu) for any question.
 
 ## 1. Data
 
+The fuzzing data for analysis is contained in results/results.zip. We have pruned out some large and unnecessary files.
+Please unzip the content to the results/ folder.
+
 ## 2. The Analysis
 
+The scripts/ folder has all scripts used for data analysis. Among these scripts, the Jupyter notebook (IPython notebook) 
+main_analysis.ipynb contains all results presented in Section 4, 5 and 6. You could directly view the notebook on Github. 
+
+To run it locally, please first install the following packages:
+
+(1) Python 3
+    A simple way to set up the environment is to install Anaconda. By doing this, you can skip (2) and (3).
+    https://www.continuum.io/downloads
+
+(2) The latest Jupyter Notebook from:
+    http://jupyter.org/
+  
+(3) Some common data analysis packages such as matplotlib, scipy, etc. 
+
+(4) The powerlaw package
+    https://pypi.python.org/pypi/powerlaw
+
+Then launch Jupyter notebook and play with the main_analysis.ipynb.
+	
 ## 3. The Fuzzing Process
 
-NOTICE: The fuzzing process described in the paper cannot be reproduced using data provided here.
-One reason is that we do not provide seed files, because the size of the collection is very large (10GB+).
-However, here we list all steps of our fuzzing experiment, from seed collection to running fuzzing.
+Below, we list all steps of our fuzzing experiment, from seed collection to running fuzzing.
+NOTICE: We do not share seed files, because the size of the seed collection is too large (10GB+).
 
 ### 3.1 Prepare the fuzzing environment
 

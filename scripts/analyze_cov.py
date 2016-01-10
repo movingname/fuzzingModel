@@ -44,7 +44,7 @@ for root, subFolders, files in os.walk(cov_folder):
     for f in files:
         covs.append(os.path.join(root,f))
 
-print("There are " + str(len(covs)) + " coverage files.")
+print("There are " + str(len(covs)) + " coverage files in " + cov_folder + ".")
 
 addr_count = {}
 addr_count_total = {}
@@ -176,6 +176,8 @@ for i in range(0, seed_num):
     seed_list.write(fileName + "\n")
     
 seed_list.close()
+
+print("Generated " + seed_list)
 
 print("# bbl in the final seed:" + str(len(seed_addr)))
 print("% bbl covered:" + str(len(seed_addr) / len(addr_count_total)))

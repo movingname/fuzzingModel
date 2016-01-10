@@ -37,4 +37,4 @@ for line in seed_list_file:
 
 seed_list_file.close()
 
-print("Done.")
+print("Copied files from " + full_seed_list_path + " to " + seed_folder)

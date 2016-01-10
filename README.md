@@ -139,6 +139,14 @@ cmdline=[The command]
 
 killprocname=[name of the target program]
 
+We list all commands in the last section of this file.
+
+(4) Run a fuzzing campagin:
+
+    ./batchs.sh
+
+This executes forever so please stop at some point. Also, the fuzzing campagin can be resumed after a stop.
+	
 ## Commands Used for Fuzzing Programs:
 
 autotrace:

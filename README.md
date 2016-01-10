@@ -6,17 +6,17 @@ To reproduce our analysis, please follow the steps described Section 1 and 2.
 To redo the fuzzing, please follow the steps in Section 3. **Notice**: We do not share seed files, 
 because the size of the seed collection is too large (10GB+). We list the sources of seed files we used in Section 3.1.
 
-Please email us (muz127@ist.psu.edu) for any question.
+Please email us (muz127@ist.psu.edu) for any question. Thank you!
 
 ## 1. Data
 
 The fuzzing campaign data for analysis is contained in results/results.zip. We have pruned out some large and unnecessary files.
 Please unzip the content to the results/ folder.
 
-## 2. The Analysis
+## 2. Analysis
 
 The scripts/ folder has all scripts used for data analysis. Among these scripts, the Jupyter notebook (IPython notebook) 
-main_analysis.ipynb contains all results presented in Section 4, 5 and 6. You could directly view the notebook on Github. 
+**main_analysis.ipynb** contains all results presented in Section 4, 5 and 6. **You could directly view the notebook on Github**. 
 
 To run the notebook locally, please first install the following packages:
 
@@ -38,20 +38,22 @@ https://pypi.python.org/pypi/powerlaw
 
 Then launch Jupyter notebook and play with the main_analysis.ipynb.
 	
-## 3. The Fuzzing Process
+## 3. Fuzzing
 
 Below, we list all steps of our fuzzing experiment, from seed collection to running fuzzing.
 
 ### 3.1 Prepare the Fuzzing Environment
 
 (1) Download the VM image of BFF 2.7 and follow the installation guide.
+
 https://www.cert.org/vulnerability-analysis/tools/bff.cfm?
 
 (2) After launching the VM, install the target application using apt-get. We list program version numbers in the paper.
 
 (3) Install the pincoverage tool we wrote. First, copy pincoverage/ to the bff shared folder in the host OS.
-Then in the guest OS, enter pincoverage/ and do
+Then on the guest OS 
 
+	cd pincoverage/
     python make.py
 
 ### 3.2 Seed Collection
@@ -102,13 +104,13 @@ http://bmptestsuite.sourceforge.net/
 
 ### 3.3 Collect and Analyze Coverage Data
 
-(1) Copy all seed files for a target program into bff/full_seeds:
+(1) Copy all seed files for a target program into bff/full_seeds.
 
-(2) In pincoverage/collect_cov.py, find line:
+(2) In pincoverage/collect_cov.py, find the following line:
 
 	args = [pin, '-injection', 'child', '-t',  pintool, '-o',  result_folder + cov_file_name, '--', prog, "-r", "-h", "-f", "-O", seed]
 
-Update items after '--' with the right command. Please see the last section for all commands.
+and replace items after '--' with the right command. Please see the last section for all commands.
 	
 (3) Start code coverage data collection (on the guest OS):
 
@@ -150,7 +152,11 @@ We list all commands in the last section of this file.
     ./batchs.sh
 
 This executes forever so please stop at some point. Also, the fuzzing campagin can be resumed after a stop.
-	
+
+(5) Copy the UbuFuzz_* folder to results/. To save space, please only keep UbuFuzz_*/results/.
+
+(6) Analyze the fuzzing campagin data described in Section 2.
+
 ## 4. Commands Used for Fuzzing Programs:
 
 autotrace:

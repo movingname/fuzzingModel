@@ -21,19 +21,19 @@ To run the notebook locally, please first install the following packages:
 
 (1) Python 3
 
-    A simple way to set up the environment is to install Anaconda. By doing this, you can skip (2) and (3).
+A simple way to set up the environment is to install Anaconda. By doing this, you can skip (2) and (3).
 	
-    https://www.continuum.io/downloads
+https://www.continuum.io/downloads
 
 (2) The latest Jupyter Notebook
 
-    http://jupyter.org/
+http://jupyter.org/
   
 (3) Some common data analysis packages such as matplotlib, scipy, etc. 
 
 (4) The powerlaw package
 
-    https://pypi.python.org/pypi/powerlaw
+https://pypi.python.org/pypi/powerlaw
 
 Then launch Jupyter notebook and play with the main_analysis.ipynb.
 	
@@ -56,11 +56,11 @@ Then in the guest OS, enter pincoverage/ and do make
 
 We briefly describe how to collect seed files from the Internet:
 
-Video:
+**Video**:
 
 samples.mplayerhq.hu
 
-PDF:
+**PDF**:
 
 Google, Bing
 
@@ -68,11 +68,13 @@ https://github.com/veraPDF/veraPDF-corpus
 
 http://www.pdfa.org/2011/08/isartor-test-suite/
 
-MP3:
+**MP3**:
 
-Bing
+Bing. We use [GoogleScraper](https://github.com/NikolaiT/GoogleScraper)
 
-PNG:
+    GoogleScraper -s "bing" -q "filetype:mp3" -p 100
+
+**PNG**:
 
 http://www.schaik.com/pngsuite/
 
@@ -105,37 +107,37 @@ http://bmptestsuite.sourceforge.net/
 *Commands used for fuzzing programs*:
 
 autotrace:
-autotrace $SEEDFILE > test.pdf
+    autotrace $SEEDFILE > test.pdf
 
 convert:
-~/convert $SEEDFILE /dev/null
+    ~/convert $SEEDFILE /dev/null
 
 feh: 
-feh $SEEDFILE
+    feh $SEEDFILE
 
 ffmpeg: 
-ffmpeg -i $SEEDFILE -f rawvideo -y /dev/null
+    ffmpeg -i $SEEDFILE -f rawvideo -y /dev/null
 
 gif2png:
-gif2png -r -f -h -O $SEEDFILE
+    gif2png -r -f -h -O $SEEDFILE
 
 gifsicle:
-gifsicle -i < $SEEDFILE > /dev/null
+    gifsicle -i < $SEEDFILE > /dev/null
 
 jpegtran:
-jpegtran $SEEDFILE
+    jpegtran $SEEDFILE
 
 mp3gain:
-mp3gain $SEEDFILE
+    mp3gain $SEEDFILE
 
 mupdf:
-mupdf $SEEDFILE
+    mupdf $SEEDFILE
 
 Outside In Viewer: 
-<Directory>/sdk/demo/simple $SEEDFILE
+    <Directory>/sdk/demo/simple $SEEDFILE
 
 xpdf:
-xpdf $SEEDFILE
+    xpdf $SEEDFILE
 
 
 

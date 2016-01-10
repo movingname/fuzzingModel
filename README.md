@@ -2,12 +2,14 @@
 
 This repository contains data and scripts for the work Empirical Analysis and Modeling of Black-Box Mutational Fuzzing. 
 
+To reproduce our analysis and experiment, please follow the steps described in each section.
+
 Please email us (muz127@ist.psu.edu) for any question.
 
 
 ## 1. Data
 
-The fuzzing data for analysis is contained in results/results.zip. We have pruned out some large and unnecessary files.
+The fuzzing campaign data for analysis is contained in results/results.zip. We have pruned out some large and unnecessary files.
 Please unzip the content to the results/ folder.
 
 ## 2. The Analysis
@@ -15,18 +17,22 @@ Please unzip the content to the results/ folder.
 The scripts/ folder has all scripts used for data analysis. Among these scripts, the Jupyter notebook (IPython notebook) 
 main_analysis.ipynb contains all results presented in Section 4, 5 and 6. You could directly view the notebook on Github. 
 
-To run it locally, please first install the following packages:
+To run the notebook locally, please first install the following packages:
 
 (1) Python 3
+
     A simple way to set up the environment is to install Anaconda. By doing this, you can skip (2) and (3).
+	
     https://www.continuum.io/downloads
 
-(2) The latest Jupyter Notebook from:
+(2) The latest Jupyter Notebook
+
     http://jupyter.org/
   
 (3) Some common data analysis packages such as matplotlib, scipy, etc. 
 
 (4) The powerlaw package
+
     https://pypi.python.org/pypi/powerlaw
 
 Then launch Jupyter notebook and play with the main_analysis.ipynb.
@@ -47,6 +53,50 @@ https://www.cert.org/vulnerability-analysis/tools/bff.cfm?
 Then in the guest OS, enter pincoverage/ and do make
 
 ### 3.2 Seed Collection
+
+We briefly describe how to collect seed files from the Internet:
+
+Video:
+
+samples.mplayerhq.hu
+
+PDF:
+
+Google, Bing
+
+https://github.com/veraPDF/veraPDF-corpus
+
+http://www.pdfa.org/2011/08/isartor-test-suite/
+
+MP3:
+
+Bing
+
+PNG:
+
+http://www.schaik.com/pngsuite/
+
+https://code.google.com/p/imagetestsuite/wiki/PNGTestSuite
+
+GIF:
+
+https://github.com/dvyukov/go-fuzz/tree/master/examples/gif/corpus
+
+https://code.google.com/p/imagetestsuite/downloads/list
+
+Google Image Downloader
+
+JPEG:
+
+https://code.google.com/p/imagetestsuite/downloads/detail?name=imagetestsuite-jpg-1.00.tar.gz&amp;can=2&amp;q=
+
+Google Image Downloader
+
+Bitmap:
+
+http://bmptestsuite.sourceforge.net/
+
+
 
 ### 3.3 Collect and Analyze Coverage Data
 

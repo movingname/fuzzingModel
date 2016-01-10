@@ -4,22 +4,30 @@ import matplotlib.pyplot as plt
 import numpy as np
 from operator import itemgetter
 import random
+import argparse
 
+parser = argparse.ArgumentParser(description="Copy the selected seed files to the folder for fuzzing.")
+parser.add_argument("program", help="The program to fuzz.")
+parser.add_argument("cov_folder", help="The folder that contains code coverage outputs. Usually it is <bff folder>/pincoverage/results/")
+args = parser.parse_args()
+
+prog = args.program
+cov_folder = args.cov_folder
 
 #prog = "xpdf_3.02-2"
 #prog  = "gif2png"
-prog = "feh"
+# prog = "feh"
 #prog = "mp3blaster"
 #prog = "jpegtran"
 # prog = "eog"
 
 # prog = "experiment"
 
-cov_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_" + prog + "_folder/pincoverage/results/"
+# cov_folder = "C:/Users/rvlfl_000/Documents/Projects/Fuzzing/UbuFuzz_2013_32_" + prog + "_folder/pincoverage/results/"
 
-print(cov_folder)
+# print(cov_folder)
 
-bbl_dist_fig_path = "bbl_dist.pdf"
+bbl_dist_fig_path = "../output/bbl_dist.pdf"
 
 seed_num = 50
 
@@ -95,10 +103,7 @@ for pair in sorted(addr_count_total.items(), key=itemgetter(1), reverse=True):
 # Dedup
 
 
-
-#################################################################
 # We draw the distribution of bbls
-#################################################################
 
 fontSize = 18
 figWidth = 7
@@ -122,11 +127,8 @@ plt.plot(np.arange(len(bbl_count_sorted)), bbl_count_sorted)
 fig.tight_layout()
 
 fig.savefig(bbl_dist_fig_path) 
-##############################################################
 
-
-
-#assert False
+# assert False
 
 # A greedy algoritm to choose a large coverage seed set
 
@@ -147,7 +149,6 @@ def get_rand_items(cand_size, popu):
 seed_addr = set()
 
 seed_list = codecs.open(prog + "seeds.txt", "w", 'utf-8')
-
 
 for i in range(0, seed_num):
     max_union_num = 0

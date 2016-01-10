@@ -3,8 +3,10 @@
 This repository contains data and scripts for the work Empirical Analysis and Modeling of Black-Box Mutational Fuzzing. 
 
 To reproduce our analysis, please follow the steps described Section 1 and 2.
-To redo the fuzzing, please follow the steps in Section 3. **Notice**: We do not share seed files, 
-because the size of the seed collection is too large (10GB+). However, we list the sources of seed files we used in Section 3.1.
+To redo the fuzzing, please follow the steps in Section 3. **Notice**: We do not share seed files directly, 
+because (1) the size of the seed collection is too large (10GB+), (2) we have used some PDF seed files containing some 
+private information, and (3) some seed files collected from the search engines might be associated with copyright that 
+prevents sharing. However, we list the sources of seed files and tools we used in Section 3.1.
 Some seed files can be directly downloaded from websites, while others need to be collected from search engines such as Bing
 and Google.
 
@@ -60,7 +62,7 @@ Then on the guest OS
 
 ### 3.2 Seed Collection
 
-Here are the sources we used for each type of seed files.
+Here are the sources and tools we used for each type of seed files.
 
 **Video**:
 
@@ -68,7 +70,7 @@ samples.mplayerhq.hu
 
 **PDF**:
 
-Google, Bing
+Bing, Google
 
 https://github.com/veraPDF/veraPDF-corpus
 
@@ -129,7 +131,7 @@ and replace items after '--' with the right command. Please see the last section
 	
 ### 3.4 Run Fuzzing
 
-More information can be find in the README file of BFF.
+**More information can be find in the README file of BFF.**
 
 (1) Increase the maximum number of backup logs. In bff.py, find the following line:
 

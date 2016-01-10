@@ -100,21 +100,25 @@ Google Image Downloader
 
 http://bmptestsuite.sourceforge.net/
 
-
-
 ### 3.3 Collect and Analyze Coverage Data
 
 (1) On the host OS, put all seed files for a target program into bff/full_seeds.
 
-(2) Start code coverage data collection:
+(2) In pincoverage/collect_cov.py, find line:
+
+	args = [pin, '-injection', 'child', '-t',  pintool, '-o',  result_folder + cov_file_name, '--', prog, "-r", "-h", "-f", "-O", seed]
+
+Update items after '--' with the right command. Please see the last section for all commands.
+	
+(3) Start code coverage data collection:
 
     python pincoverage/collect_cov.py
 
-(3) Use the greedy algorithm to select seeds (on the host OS):
+(4) Use the greedy algorithm to select seeds (on the host OS):
 
     python scripts/analyze_cov.py
 	
-(4) Copy selected seeds to the fuzzing folder (on the host machine):
+(5) Copy selected seeds to the fuzzing folder (on the host machine):
 
     python copy_seeds.py
 

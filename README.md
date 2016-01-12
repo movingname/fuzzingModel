@@ -14,8 +14,8 @@ Please email us (muz127@ist.psu.edu) for any question. Thank you!
 
 ## 1. Data
 
-The fuzzing campaign data for analysis is contained in results/results.zip. We have pruned out some large and unnecessary files.
-Please unzip the content to the results/ folder.
+The fuzzing campaign data for analysis is contained in fuzzing_logs/results.zip. We have pruned out some large and unnecessary files.
+Please unzip the content to the fuzzing_logs/ folder.
 
 ## 2. Analysis
 
@@ -162,7 +162,7 @@ We list all commands in the last section of this file.
 
 This executes forever so please stop at some point. Also, the fuzzing campagin can be resumed after a stop.
 
-(5) Copy the UbuFuzz_* folder to results/. To save space, please only keep UbuFuzz_*/results/.
+(5) Copy the UbuFuzz_* folder to fuzzing_logs/. To save space, please only keep UbuFuzz_*/results/.
 
 (6) Analyze the fuzzing campagin data described in Section 2.
 

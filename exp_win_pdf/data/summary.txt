@@ -1,0 +1,531 @@
+File Name: E:/Data/pdfFuzzerResult/run1/crash_input1.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:fdf2f4d8=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x684288a6)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run1/crash_input2.pdf
+md5: 1e58d424967200965ddd2ff2088948fb
+Crash Inst: 58119a70 8b4108          mov     eax,dword ptr [ecx+8] ds:002b:1800761b=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x0000000000024db0 (Hash=0x74643704.0x5aa49751)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x58119a70
+
+File Name: E:/Data/pdfFuzzerResult/run1/crash_input3.pdf
+md5: e4cd227570c563d82e1bb16732e585dd
+Crash Inst: 58221e83 53              push    ebx
+
+!exploitable 1.6.0.0
+Exploitability Classification: PROBABLY_NOT_EXPLOITABLE
+Recommended Bug Title: Stack Exhaustion starting at npdf!ProvideCoreHFT2+0x000000000012d1c3 (Hash=0x2a5dfbe5.0xccf1b55b)
+
+Stack Exhaustion is considered to be probably not exploitable.
+
+eip: 0x58221e83
+
+File Name: E:/Data/pdfFuzzerResult/run1/crash_input4.pdf
+md5: 1e58d424967200965ddd2ff2088948fb
+Crash Inst: 58119a70 8b4108          mov     eax,dword ptr [ecx+8] ds:002b:1800e88e=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x0000000000024db0 (Hash=0x74643704.0x5aa49751)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x58119a70
+
+File Name: E:/Data/pdfFuzzerResult/run1/crash_input5.pdf
+md5: 1e58d424967200965ddd2ff2088948fb
+Crash Inst: 58119a70 8b4108          mov     eax,dword ptr [ecx+8] ds:002b:18008edb=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x0000000000024db0 (Hash=0x74643704.0x5aa49751)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x58119a70
+
+File Name: E:/Data/pdfFuzzerResult/run1/crash_input6.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:293722b0=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x684288a6)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run1/crash_input7.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:32bd2fa0=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x684288a6)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input01.pdf
+md5: e4cd227570c563d82e1bb16732e585dd
+Crash Inst: 5814c9a1 53              push    ebx
+
+!exploitable 1.6.0.0
+Exploitability Classification: PROBABLY_NOT_EXPLOITABLE
+Recommended Bug Title: Stack Exhaustion starting at npdf!ProvideCoreHFT2+0x0000000000057ce1 (Hash=0x2a5dfbe5.0x44977215)
+
+Stack Exhaustion is considered to be probably not exploitable.
+
+eip: 0x5814c9a1
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input02.pdf
+md5: dc9dd533cbc164fe09b97e46c21e61cc
+Crash Inst: 775e2f71 8b4c2454        mov     ecx,dword ptr [esp+54h] ss:002b:01d5ac84=bfc988a5
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Error Code (0xc000041d) starting at KERNELBASE!RaiseException+0x0000000000000048 (Hash=0xc401a108.0x39c773be)
+
+eip: 0x775e2f71
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input03.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:f07ae980=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x684288a6)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input04.pdf
+md5: 741ed4f5f1fba6aa164a715a982405ba
+Crash Inst: 58119a70 8b4108          mov     eax,dword ptr [ecx+8] ds:002b:1800d8fb=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x0000000000024db0 (Hash=0xdc47ebbe.0xda8cc0b9)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x58119a70
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input05.pdf
+md5: 5d494abfba3a01cb8914b2dc7e1aaaea
+Crash Inst: 5850a695 660f6f6e50      movdqa  xmm5,xmmword ptr [esi+50h] ds:002b:0eec9000=????????????????????????????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Read Access Violation starting at npdf!ProvideCoreHFT+0x00000000001cb3b5 (Hash=0x6537e503.0x0cb50f6b)
+
+eip: 0x5850a695
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input06.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:a956b140=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x684288a6)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input07.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:5a3bd610=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x0c140e3d)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input08.pdf
+md5: 1e58d424967200965ddd2ff2088948fb
+Crash Inst: 58119a70 8b4108          mov     eax,dword ptr [ecx+8] ds:002b:1800cba5=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x0000000000024db0 (Hash=0x74643704.0x5aa49751)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x58119a70
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input09.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:e49fb110=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x684288a6)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input10.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:3ef5ccd0=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x684288a6)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input11.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:537f5150=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x684288a6)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input12.pdf
+md5: 5d494abfba3a01cb8914b2dc7e1aaaea
+Crash Inst: 584fbde7 f3a5            rep movs dword ptr es:[edi],dword ptr [esi]
+
+!exploitable 1.6.0.0
+Exploitability Classification: PROBABLY_EXPLOITABLE
+Recommended Bug Title: Probably Exploitable - Read Access Violation on Block Data Move starting at npdf!ProvideCoreHFT+0x00000000001bcb07 (Hash=0x6537e503.0x2344ae91)
+
+This is a read access violation in a block data move, and is therefore classified as probably exploitable.
+
+eip: 0x584fbde7
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input13.pdf
+md5: 5d494abfba3a01cb8914b2dc7e1aaaea
+Crash Inst: 584fbde7 f3a5            rep movs dword ptr es:[edi],dword ptr [esi]
+
+!exploitable 1.6.0.0
+Exploitability Classification: PROBABLY_EXPLOITABLE
+Recommended Bug Title: Probably Exploitable - Read Access Violation on Block Data Move starting at npdf!ProvideCoreHFT+0x00000000001bcb07 (Hash=0x6537e503.0x2344ae91)
+
+This is a read access violation in a block data move, and is therefore classified as probably exploitable.
+
+eip: 0x584fbde7
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input14.pdf
+md5: dc9dd533cbc164fe09b97e46c21e61cc
+Crash Inst: 775e2f71 8b4c2454        mov     ecx,dword ptr [esp+54h] ss:002b:01d5aebc=8c4ade2e
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Error Code (0xc000041d) starting at KERNELBASE!RaiseException+0x0000000000000048 (Hash=0xc401a108.0x39c773be)
+
+eip: 0x775e2f71
+
+File Name: E:/Data/pdfFuzzerResult/run2/crash_input15.pdf
+md5: 271b874286f923d1ae2508083606a10b
+Crash Inst: 581c5790 8b480c          mov     ecx,dword ptr [eax+0Ch] ds:002b:baadf019=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x00000000000d0ad0 (Hash=0x1aafa7de.0xbf08c09f)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x581c5790
+
+File Name: E:/Data/pdfFuzzerResult/run3/crash_input1.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:b4324660=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x684288a6)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run3/crash_input2.pdf
+md5: 137d78495eceee5e9b017b6492f377d4
+Crash Inst: 009ff1fe 89bb9c000000    mov     dword ptr [ebx+9Ch],edi ds:002b:0000009c=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: User Mode Write AV near NULL starting at NitroPDFReader!CxIOFile::~CxIOFile+0x000000000001d87e (Hash=0xeea41e7a.0xd673b0e8)
+
+User mode write access violations that are near NULL are unknown.
+
+eip: 0x9ff1fe
+
+File Name: E:/Data/pdfFuzzerResult/run3/crash_input3.pdf
+md5: 1e58d424967200965ddd2ff2088948fb
+Crash Inst: 58119a70 8b4108          mov     eax,dword ptr [ecx+8] ds:002b:1800fc05=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x0000000000024db0 (Hash=0x74643704.0x5aa49751)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x58119a70
+
+File Name: E:/Data/pdfFuzzerResult/run4/crash_input1.pdf
+md5: 1e58d424967200965ddd2ff2088948fb
+Crash Inst: 58119a70 8b4108          mov     eax,dword ptr [ecx+8] ds:002b:1800a7fc=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x0000000000024db0 (Hash=0x74643704.0x5aa49751)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x58119a70
+
+File Name: E:/Data/pdfFuzzerResult/run4/crash_input2.pdf
+md5: 1e58d424967200965ddd2ff2088948fb
+Crash Inst: 58119a70 8b4108          mov     eax,dword ptr [ecx+8] ds:002b:1800e1fc=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x0000000000024db0 (Hash=0x74643704.0x5aa49751)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x58119a70
+
+File Name: E:/Data/pdfFuzzerResult/run5/crash_input1.pdf
+md5: 0ab6cf17643c1a2116d8e68142429df2
+Crash Inst: 77b705be cc              int     3
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Breakpoint starting at ntdll!RtlpNtSetValueKey+0x0000000000001b10 (Hash=0x4e04b09e.0xe3affd71)
+
+While a breakpoint itself is probably not exploitable, it may also be an indication that an attacker is testing a target. In either case breakpoints should not exist in production code.
+
+eip: 0x77b705be
+
+File Name: E:/Data/pdfFuzzerResult/run5/crash_input2.pdf
+md5: 5d494abfba3a01cb8914b2dc7e1aaaea
+Crash Inst: 5850a69a 660f6f7660      movdqa  xmm6,xmmword ptr [esi+60h] ds:002b:124ef000=????????????????????????????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Read Access Violation starting at npdf!ProvideCoreHFT+0x00000000001cb3ba (Hash=0x6537e503.0x23ae25b5)
+
+eip: 0x5850a69a
+
+File Name: E:/Data/pdfFuzzerResult/run5/crash_input3.pdf
+md5: 1e58d424967200965ddd2ff2088948fb
+Crash Inst: 58119a70 8b4108          mov     eax,dword ptr [ecx+8] ds:002b:1800c948=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x0000000000024db0 (Hash=0x74643704.0x5aa49751)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x58119a70
+
+File Name: E:/Data/pdfFuzzerResult/run5/crash_input4.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:1e2f4090=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x684288a6)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run5/crash_input5.pdf
+md5: 1e58d424967200965ddd2ff2088948fb
+Crash Inst: 58119a70 8b4108          mov     eax,dword ptr [ecx+8] ds:002b:180098e1=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x0000000000024db0 (Hash=0x74643704.0x5aa49751)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x58119a70
+
+File Name: E:/Data/pdfFuzzerResult/run5/crash_input6.pdf
+md5: 5d494abfba3a01cb8914b2dc7e1aaaea
+Crash Inst: 5850a69f 660f6f7e70      movdqa  xmm7,xmmword ptr [esi+70h] ds:002b:0de36000=????????????????????????????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Read Access Violation starting at npdf!ProvideCoreHFT+0x00000000001cb3bf (Hash=0x6537e503.0x4e5668ea)
+
+eip: 0x5850a69f
+
+File Name: E:/Data/pdfFuzzerResult/run5/crash_input7.pdf
+md5: e4cd227570c563d82e1bb16732e585dd
+Crash Inst: 58221e83 53              push    ebx
+
+!exploitable 1.6.0.0
+Exploitability Classification: PROBABLY_NOT_EXPLOITABLE
+Recommended Bug Title: Stack Exhaustion starting at npdf!ProvideCoreHFT2+0x000000000012d1c3 (Hash=0x2a5dfbe5.0xccf1b55b)
+
+Stack Exhaustion is considered to be probably not exploitable.
+
+eip: 0x58221e83
+
+File Name: E:/Data/pdfFuzzerResult/run5/crash_input8.pdf
+md5: 8e32fcb6d5a88f8a143b734fe077abc6
+Crash Inst: 5820d210 8b4120          mov     eax,dword ptr [ecx+20h] ds:002b:00000020=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: PROBABLY_NOT_EXPLOITABLE
+Recommended Bug Title: Read Access Violation near NULL starting at npdf!ProvideCoreHFT2+0x0000000000118550 (Hash=0x960690c5.0x49dbdf82)
+
+This is a user mode read access violation near null, and is probably not exploitable.
+
+eip: 0x5820d210
+
+File Name: E:/Data/pdfFuzzerResult/run5/crash_input9.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:05c28bc0=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x0c140e3d)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run6/crash_input01.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:8078f480=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x684288a6)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run6/crash_input02.pdf
+md5: dc9dd533cbc164fe09b97e46c21e61cc
+Crash Inst: 775e2f71 8b4c2454        mov     ecx,dword ptr [esp+54h] ss:002b:01d5a9dc=4bc81d33
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Error Code (0xc000041d) starting at KERNELBASE!RaiseException+0x0000000000000048 (Hash=0xc401a108.0x39c773be)
+
+eip: 0x775e2f71
+
+File Name: E:/Data/pdfFuzzerResult/run6/crash_input03.pdf
+md5: e4cd227570c563d82e1bb16732e585dd
+Crash Inst: 5814c9a1 53              push    ebx
+
+!exploitable 1.6.0.0
+Exploitability Classification: PROBABLY_NOT_EXPLOITABLE
+Recommended Bug Title: Stack Exhaustion starting at npdf!ProvideCoreHFT2+0x0000000000057ce1 (Hash=0x2a5dfbe5.0x44977215)
+
+Stack Exhaustion is considered to be probably not exploitable.
+
+eip: 0x5814c9a1
+
+File Name: E:/Data/pdfFuzzerResult/run6/crash_input04.pdf
+md5: 1e58d424967200965ddd2ff2088948fb
+Crash Inst: 58119a70 8b4108          mov     eax,dword ptr [ecx+8] ds:002b:1800aaf2=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x0000000000024db0 (Hash=0x74643704.0x5aa49751)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x58119a70
+
+File Name: E:/Data/pdfFuzzerResult/run6/crash_input05.pdf
+md5: 5d494abfba3a01cb8914b2dc7e1aaaea
+Crash Inst: 584fbde7 f3a5            rep movs dword ptr es:[edi],dword ptr [esi]
+
+!exploitable 1.6.0.0
+Exploitability Classification: PROBABLY_EXPLOITABLE
+Recommended Bug Title: Probably Exploitable - Read Access Violation on Block Data Move starting at npdf!ProvideCoreHFT+0x00000000001bcb07 (Hash=0x6537e503.0x2344ae91)
+
+This is a read access violation in a block data move, and is therefore classified as probably exploitable.
+
+eip: 0x584fbde7
+
+File Name: E:/Data/pdfFuzzerResult/run6/crash_input06.pdf
+md5: 1e58d424967200965ddd2ff2088948fb
+Crash Inst: 58119a70 8b4108          mov     eax,dword ptr [ecx+8] ds:002b:1800ba31=????????
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address controls Branch Selection starting at npdf!ProvideCoreHFT2+0x0000000000024db0 (Hash=0x74643704.0x5aa49751)
+
+The data from the faulting address is later used to determine whether or not a branch is taken.
+
+eip: 0x58119a70
+
+File Name: E:/Data/pdfFuzzerResult/run6/crash_input07.pdf
+md5: 83ba05be694de9902c7881ad9bc7dda7
+Crash Inst: 582351af 8a0410          mov     al,byte ptr [eax+edx]      ds:002b:0ea5e000=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Data from Faulting Address may be used as a return value starting at npdf!ProvideCoreHFT2+0x00000000001404ef (Hash=0x2a5dfbe5.0x7c1bf862)
+
+The data from the faulting address may later be used as a return value from this function.
+
+eip: 0x582351af
+
+File Name: E:/Data/pdfFuzzerResult/run6/crash_input08.pdf
+md5: 1d14ca3bfccc5695f5c0d2f8d74347fc
+Crash Inst: 58223971 804cca1004      or      byte ptr [edx+ecx*8+10h],4 ds:002b:81083568=??
+
+!exploitable 1.6.0.0
+Exploitability Classification: EXPLOITABLE
+Recommended Bug Title: Exploitable - User Mode Write AV starting at npdf!ProvideCoreHFT2+0x000000000012ecb1 (Hash=0x2a5dfbe5.0x684288a6)
+
+User mode write access violations that are not near NULL are exploitable.
+
+eip: 0x58223971
+
+File Name: E:/Data/pdfFuzzerResult/run6/crash_input09.pdf
+WARNING: Skip this file because it won't trigger a crash on my new laptop
+
+File Name: E:/Data/pdfFuzzerResult/run6/crash_input10.pdf
+md5: 0ab6cf17643c1a2116d8e68142429df2
+Crash Inst: 77b705be cc              int     3
+
+!exploitable 1.6.0.0
+Exploitability Classification: UNKNOWN
+Recommended Bug Title: Breakpoint starting at ntdll!RtlpNtSetValueKey+0x0000000000001b10 (Hash=0x4e04b09e.0xe3affd71)
+
+While a breakpoint itself is probably not exploitable, it may also be an indication that an attacker is testing a target. In either case breakpoints should not exist in production code.
+
+eip: 0x77b705be
+

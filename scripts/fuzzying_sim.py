@@ -33,10 +33,11 @@ def expected_find_sim(n, t, alpha, k=2):
 
     bugs_accu = []
     seq = []
+    bug_discovery_time = {}
 
-    for bug in _bugs:
+    for i in range(0, len(_bugs)):
 
-        bug = int(bug)
+        bug = int(_bugs[i])
 
         # Here, we skip bug = 1 because we use that to represent nothing happened in a fuzzing run
         if (n is not None and bug > n) or bug < k:
@@ -45,11 +46,12 @@ def expected_find_sim(n, t, alpha, k=2):
 
         if bug not in bugs:
             seq.append(bug)
+            bug_discovery_time[bug] = i
 
         bugs.add(bug)
         bugs_accu.append(len(bugs))
 
-    return bugs, bugs_accu, seq
+    return bugs, bugs_accu, seq, bug_discovery_time
 
 
 def get_alpha_sim(bug_count, t):

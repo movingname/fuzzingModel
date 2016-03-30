@@ -6,3 +6,4 @@ output/*.pdf
 output/*.db
 scripts_seed_collection/
 scripts/.ipynb_checkpoints/
+results/

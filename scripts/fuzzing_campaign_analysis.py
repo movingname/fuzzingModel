@@ -60,6 +60,7 @@ def analyze_one_campaign(target, ax=None, chart="bar", alpha_cached=True):
     crash_count = 0
     bug_count = 0
     bug_count_accu = []
+    bug_discovery_runs = {} # runs until the first occurrence.
     seed_info = {"bugs": {}, "freq": {}}
     expCount = {}
     for exp in exps:
@@ -114,6 +115,8 @@ def analyze_one_campaign(target, ax=None, chart="bar", alpha_cached=True):
                     expCount[crash_infos[crash_hash].exploitability] += 1
 
                     bug_count += 1
+
+                    bug_discovery_runs[crash_hash] = run_count
                     # print(crash_hash)
                 else:
                     # print("WARNING: duplicated crash_hash!")
@@ -184,37 +187,35 @@ def analyze_one_campaign(target, ax=None, chart="bar", alpha_cached=True):
 
     # print("max crash = " + str(max_crash_count))
 
-    ###################################
-    # Draw the distribution of bugs
-    ###################################
+    ################################################
+    # Draw the distribution of discovery probability
+    ################################################
 
-    if ax is None:
-        ax = plt.axes()
+    if ax:
 
-    pos = np.arange(len(crash_counts_sorted)) + 1
-    ax.set_title(target + titleDecor[target], fontsize=14)
-    ax.set_xlabel('Bugs', fontsize=12)
-    ax.set_ylabel('Probability', fontsize=12)
+	    pos = np.arange(len(crash_counts_sorted)) + 1
+	    ax.set_title(target + titleDecor[target], fontsize=14)
+	    ax.set_xlabel('Bug Index', fontsize=12)
+	    ax.set_ylabel('Probability', fontsize=12)
+	    ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
 
-    ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
+	    if chart == "bar":
 
-    if chart == "bar":
+	        barlist = ax.bar(pos, np.array(crash_counts_sorted) / run_count, color='b')
 
-        barlist = ax.bar(pos, np.array(crash_counts_sorted) / run_count, color='b')
+	        for i in range(0, len(crash_counts_sorted)):
+	            barlist[i].set_color(crash_color_sorted[i])
 
-        for i in range(0, len(crash_counts_sorted)):
-            barlist[i].set_color(crash_color_sorted[i])
+	        # ax.set_xticks(pos + (width / 2))
+	        # ax.set_xticklabels(list(progSorted))
 
-        # ax.set_xticks(pos + (width / 2))
-        # ax.set_xticklabels(list(progSorted))
-
-    elif chart == "log-log":
-        ax.scatter(pos, sorted(np.array(crash_counts_sorted) / run_count, reverse=True))
-        ax.set_yscale('log')
-        ax.set_xscale('log')
-        ax.set_xlim([1, 200])
-    else:
-        assert False
+	    elif chart == "log-log":
+	        ax.scatter(pos, np.array(crash_counts_sorted) / run_count)
+	        ax.set_yscale('log')
+	        ax.set_xscale('log')
+	        ax.set_ylim([0.0000001, 0.1])
+	    else:
+	        assert False
 
     # plt.show()
 
@@ -286,7 +287,7 @@ def analyze_one_campaign(target, ax=None, chart="bar", alpha_cached=True):
         # print(exp + ": " + str(expCount[exp]) + ", " + str(expCount[exp] / bug_count))
         fuzz_info[exp] = "{0:.2f}".format(expCount[exp] / bug_count)
 
-    return [crash_counts_sorted, crash_exp_sorted], fuzz_info, bug_count_accu, seed_info
+    return [crash_counts_sorted, crash_exp_sorted], fuzz_info, bug_count_accu, bug_discovery_runs, seed_info
 
 
 def drawCorr(corrData):
@@ -316,7 +317,7 @@ def drawCorr(corrData):
     print("p = " + str(p))
 
 
-def draw_freq_dists(targets, prog_fuzz_info, prog_fuzz_bug_accu, prog_seed_info):
+def draw_freq_dists(targets, prog_fuzz_info, prog_fuzz_bug_accu, prog_seed_info, chart="bar"):
     # Draw n * 3 figures
 
     numRow = 2
@@ -340,7 +341,7 @@ def draw_freq_dists(targets, prog_fuzz_info, prog_fuzz_bug_accu, prog_seed_info)
 
             print(target)
 
-            progCorrData[target], prog_fuzz_info[target], prog_fuzz_bug_accu[target], prog_seed_info[target] = analyze_one_campaign(target, ax, chart="bar")
+            progCorrData[target], prog_fuzz_info[target], prog_fuzz_bug_accu[target], bug_discovery_runs, prog_seed_info[target] = analyze_one_campaign(target, ax, chart)
 
     fig.tight_layout()
 

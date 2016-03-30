@@ -1,6 +1,6 @@
 # Empirical Analysis and Modeling of Black-Box Mutational Fuzzing
 
-This repository contains data and scripts for the work Empirical Analysis and Modeling of Black-Box Mutational Fuzzing. 
+This repository contains data and scripts for the work Empirical Analysis and Modeling of Black-Box Mutational Fuzzing, published at ESSoS 2016. The snapshot for ESSoS 2016 can be found in the ESSoS_2016 branch.
 
 To reproduce our analysis, please follow the steps described Section 1 and 2.
 To redo the fuzzing, please follow the steps in Section 3. **Notice**: We do not share seed files directly, 
